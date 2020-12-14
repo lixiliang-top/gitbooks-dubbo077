@@ -28,7 +28,7 @@ public class EntryServiceImpl implements EntryService {
         PageHelper.startPage(pageNum, pageSize);
         EntryExample example = new EntryExample();
         EntryExample.Criteria criteria = example.createCriteria();
-        if (categoryid == 1 || categoryid == 2) {
+        if (categoryid == 1 || categoryid == 2|| categoryid == 3) {
             criteria.andCategoryidEqualTo(categoryid);
             List<Entry> ebook_entries = entryMapper.selectByExample(example);
             PageInfo<Entry> pageInfo = new PageInfo<>(ebook_entries);
@@ -46,8 +46,8 @@ public class EntryServiceImpl implements EntryService {
     }
 
     @Override
-    public int add(Entry entry) {
-        return entryMapper.insert(entry);
+    public void add(Entry entry) {
+        entryMapper.insertSelective(entry);
     }
 
 
@@ -57,13 +57,13 @@ public class EntryServiceImpl implements EntryService {
     }
 
     @Override
-    public int upd(Entry entry) {
-        return entryMapper.updateByPrimaryKeySelective(entry);
+    public void upd(Entry entry) {
+        entryMapper.updateByPrimaryKeySelective(entry);
     }
 
     @Override
-    public int del(Integer id) {
-        return entryMapper.deleteByPrimaryKey(id);
+    public void del(Integer id) {
+        entryMapper.deleteByPrimaryKey(id);
     }
 
 

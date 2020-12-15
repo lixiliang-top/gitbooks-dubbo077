@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <div>
+        <form th:action="@{/}" method="post">
+        <select name="categoryid">
+            <option value="0" selected>全部</option>
+            <option value="1">计算机</option>
+            <option value="2">编程</option>
+            <option value="3">word</option>
+        </select>
+        <input type="submit" value="查询"/>
+        </form>
+    </div>
+<div><a th:href="@{/toAdd}">新增图书</a></div>
+<div>
+    <table>
+        <tr>
+            <td>图书编号</td>
+            <td>图书名称</td>
+            <td>图书摘要</td>
+            <td>上传人</td>
+            <td>上传时间</td>
+            <td>操作</td>
+        </tr>
+        <tr th:each="ent:${entryMyPageInfo.list}">
+            <td th:text="${ent.id}">图书编号</td>
+            <td th:text="${ent.title}">图书名称</td>
+            <td th:text="${ent.summary}">图书摘要</td>
+            <td th:text="${ent.uploaduser}">上传人</td>
+            <td th:text="${#dates.format(ent.createdate,'yyyy-MM-dd')}">上传时间</td>
+            <td><a th:href="@{'/toupdate/'+${ent.id}}">修改</a>&nbsp;&nbsp;&nbsp;&nbsp;<a th:href="@{'/delete/'+${ent.id}}">删除</a></td>
+        </tr>
+    </table>
+</div>
+<div>
+        <a th:href="@{/(pageNum=1)}">首页</a>
+        <a th:href="@{/(pageNum=${entryMyPageInfo.prePage})}">上一页</a>
+        <a th:href="@{/(pageNum=${entryMyPageInfo.nextPage})}">下一页</a>
+        <a th:href="@{/(pageNum=${entryMyPageInfo.pages})}">尾页</a>
+        <span th:text="'第'+${entryMyPageInfo.pageNum}+''"> 第[[${entryMyPageInfo.pageNum}]]</span>/<span th:text="'共'+${entryMyPageInfo.pages}+'页'"> 共[[${entryMyPageInfo.pages}]]页</span>
+</div>
+
+</body>
+</html>

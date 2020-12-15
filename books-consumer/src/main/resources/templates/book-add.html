@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div>
+
+</div>
+<div>
+    <form th:action="@{/doAdd}" method="post">
+
+        <table class="table" width="500" border="1" align="center">
+            <tr><h3>增加电子图书</h3></tr>
+            <tr>
+                <td align="center" style="border: black 1px solid; background-color: #88FEFF;"> 图书名称(*)</td>
+                <td>
+                    <input type="text" name="title">
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="border: black 1px solid; background-color: #88FEFF;">图书摘要</td>
+                <td>
+                    <input type="text" name="summary">
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="border: black 1px solid; background-color: #88FEFF;">上传人</td>
+                <td>
+                    <input type="text" name="uploaduser">
+                </td>
+            </tr>
+            <tr>
+                <td align="center" style="border: black 1px solid; background-color: #88FEFF;">上传时间</td>
+                <td>
+                    <input type="text" name="createdate" >(yyyy-MM-dd)
+                </td>
+            </tr>
+            <tr><td colspan="2" align="center"><input type="submit" value="提交">&nbsp;&nbsp;<button><a href="javascript:history.back(-1)">返回</a></button></td></tr>
+        </table>
+    </form>
+</div>
+
+</body>
+</html>
